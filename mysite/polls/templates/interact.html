@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choix interactifs</title>
+</head>
+<h1 style="text-align: center;">
+  <a href="/polls/">Accueil</a>
+</h1>
+<br>
+<body style="text-align: center;">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <form method="POST" action="{% url 'interact' %}">
+    {% csrf_token %}
+    <label for="choice1">Choose the model between 'ETC' (ExtraTreesClassifier) 'SKB' (SelectKBest) or 'LR' (Linear regression) :</label>
+    <input type="text" id="choice1" name="choice1" ><br><br>
+
+    <label for="choice2">Choose the number of features wanted :</label>
+    <input type="text" id="choice2" name="choice2" ><br><br>
+
+    <input type="submit" value="Save and start">
+</form>
+{% if choice1 %}
+    Choix 1 : {{ choice1 }}<br>
+{% endif %}
+
+{% if choice2 %}
+    Choix 2 : {{ choice2 }}<br>
+{% endif %}
+<br>
+<br>
+<div style="display: flex; flex-direction: row;">
+<div style="flex: 1;">{{plothtml|safe}}</div>
+<div style="flex: 1;">{{plothtml2|safe}}</div>
+</div>
+</body>
+</html>

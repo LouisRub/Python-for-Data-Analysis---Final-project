@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+          
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">
+      <a href="/">Accueil</a>
+    </h1>
+    <p style="text-align: center;">Projet Python A4</p>
+    <p style="text-align: center;">Facebook Comment Volume Dataset</p>
+    <br>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <form action="apply_Model">
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+          <label for="model-select">Data Visualization:</label>
+        </div>
+        <div class="col-auto">
+          <select class="form-control" name="model" id="model-select" onchange="if(this.value!='0'){this.form.submit();}">
+            <option value="0">Choose a data visualization</option>
+            <option value="datavisu1">Top 10 page category published</option>
+            <option value="datavisu2">Correlation with target (week)</option>
+            <option value="datavisu3">Correlation with target (post length)</option>
+            <option value="datavisu4">Correlation with target (share post)</option>
+            <option value="datavisu5">Median like and visitors linked to the target</option>
+            <option value="datavisu6">Linked between CC2 and CC5 and linked between CC4 and the target</option>
+            
+          </select>
+        </div>
+      </div>
+    </form>
+        
+      <div style="display: flex; flex-direction: row;">
+      <div style="flex: 1;">{{plothtml|safe}}</div>
+      <div style="flex: 1;">{{plothtml2|safe}}</div>
+    </div>
+    
+    {{plothtmlbis|safe}}
+   
+   
+   <br>
+   <br>
+   <form action="apply_Model2">
+     <div class="form-row align-items-center">
+       <div class="col-auto">
+          <label for="model-select">Modeling visualization:</label>
+        </div>
+        <div class="col-auto">
+          <select class="form-control" name="model" id="model-select" onchange='if(this.value!=0){this.form.submit();}'>
+            <option value="0">Result of Modeling</option>
+            <option value="model1">Analyze of different model</option>
+            <option value="model2">Top 10 features importance (ExtraTreesClassifier)</option>
+            <option value="model3">Top 10 features importance (SelectKBest)</option>
+            <option value="model4">PCA with 2 features</option>
+            <option value="model5">feature importance linear regression</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    
+    <div style="display: flex; flex-direction: row;">
+      <div style="flex: 1;">{{plothtml3|safe}}</div>
+      <div style="flex: 1;">{{plothtml4|safe|linebreaksbr}}</div>
+    </div>
+    
+    {{plothtmlbis2|linebreaksbr}}
+    
+    <br>
+    <br>
+    
+    {{plothtmlinteract|linebreaksbr}}
+    
+    <br>
+    <br>
+    
+    <p>Others tools :</p>
+    <ul>
+    <li><a href="{% url 'interact' %}">Choose your model !!</a></li>
+    <li><a href="{% url 'about' %}">Base de données complète</a></li>
+    <li><a href="{% url 'about2' %}">Base de données nettoyée</a></li>
+    
+    </ul>
+  </body>
+</html>
